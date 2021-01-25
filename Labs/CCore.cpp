@@ -40,24 +40,39 @@ void CCore::setMassive(vector<string> Value)
 vector<int> CCore::Bubblesort(vector<int> input)
 {
 	vector<int> result = input;
-	clock_t start = clock();
-	for (int i = 0; i < result.size(); i++)
+	float allTime = 0.0f;
+	float CurTime = 0.0f;
+	clock_t start;
+	clock_t end;
+	for (int i = 0; i < Iterations; i++)
 	{
-		int temp = 0;
-		for (int j = i + 1; j < result.size(); j++)
+		start = clock();
+		for (int i = 0; i < result.size(); i++)
 		{
-			if (result[i] > result[j])
+			int temp = 0;
+			for (int j = i + 1; j < result.size(); j++)
 			{
-				temp = result[i];
-				result[i] = result[j];
-				result[j] = temp;
+				if (result[i] > result[j])
+				{
+					temp = result[i];
+					result[i] = result[j];
+					result[j] = temp;
+				}
 			}
 		}
+		end = clock();
+		CurTime = (double)(end - start) / CLOCKS_PER_SEC;
+		cout << "Iteration time: " << CurTime << "\t Step - " << i << "\n";
+		allTime += CurTime;
+
 	}
-	clock_t end = clock();
-	PrintMassive(result);
+	cout << "Full time: " << allTime << "\n";
+	cout << "Average time: " << allTime / Iterations << "\n";
+	if (input.size() < 201)
+		PrintMassive(result);
+	else
+		cout << "Massive is very long\n";
 	setMassive(result);
-	cout << "time: " << (double)(end - start) / CLOCKS_PER_SEC << "\n";
 	return result;
 }
 vector<int> heapify(vector<int> arr, int n, int i)
@@ -88,24 +103,38 @@ vector<int> heapify(vector<int> arr, int n, int i)
 vector<int> CCore::Pyramidsort(vector<int> arr)
 {
 	setMassive(arr);
-	int n = arr.size();
-	clock_t start = clock();
-	// Построение кучи (перегруппируем массив)
-	for (int i = n / 2 - 1; i >= 0; i--)
-		arr = heapify(arr, n, i);
-
-	// Один за другим извлекаем элементы из кучи
-	for (int i = n - 1; i >= 0; i--)
+	float allTime = 0.0f;
+	float CurTime = 0.0f;
+	for (int i = 0; i < Iterations; i++)
 	{
-		// Перемещаем текущий корень в конец
-		swap(arr[0], arr[i]);
+		createRandomMassive(); // Пересоздание массива
+		int n = arr.size();
+		clock_t start = clock(); // Старт отчета
+		// Построение кучи (перегруппируем массив)
+		for (int i = n / 2 - 1; i >= 0; i--)
+			arr = heapify(arr, n, i);
 
-		// вызываем процедуру heapify на уменьшенной куче
-		arr = heapify(arr, i, 0);
+		// Один за другим извлекаем элементы из кучи
+		for (int i = n - 1; i >= 0; i--)
+		{
+			// Перемещаем текущий корень в конец
+			swap(arr[0], arr[i]);
+
+			// вызываем процедуру heapify на уменьшенной куче
+			arr = heapify(arr, i, 0);
+		}
+		clock_t end = clock(); // Конец отчета
+		CurTime = (double)(end - start) / CLOCKS_PER_SEC;
+		cout << "Iteration time: " << CurTime << "\t Step - " << i << "\n";
+		allTime += CurTime;
+		
 	}
-	clock_t end = clock();
-	PrintMassive(arr);
-	cout << "time: " << (double)(end - start) / CLOCKS_PER_SEC << "\n";
+	cout << "Full time: " << allTime << "\n";
+	cout << "Average time: " << allTime / Iterations << "\n";
+	if (arr.size() < 201)
+		PrintMassive(arr);
+	else
+		cout << "Massive is very long\n";	
 	setMassive(arr);
 	return arr;
 }
@@ -133,21 +162,32 @@ void CCore::sortByType(int type)
 		setMassive(Pyramidsort(Random));
 
 	}
+	default:
+	{
+		cout << "Bubble sort: ";
+		setMassive(Bubblesort(Random));
+		cout << "Pyramid sort: ";
+		setMassive(Pyramidsort(Random));
+
+	}
 	}
 }
-
-
-void CCore::createRandomMassive(RandomData Data, int Type)
+void CCore::Sorting(RandomData Data, int Type)
 {
-	if (Data.Length > 0)
+	CurRandomData = Data;
+	createRandomMassive();
+	PrintMassive(Random);
+	sortByType(Type);
+}
+
+void CCore::createRandomMassive()
+{
+	if (CurRandomData.Length > 0)
 	{
 		vector<int> Return;
-		for (int i = 0; i < Data.Length; i++)
-			Return.push_back(Data.RangeIn + (std::rand() % (Data.RangeOut - Data.RangeIn + 1)));
+		for (int i = 0; i < CurRandomData.Length; i++)
+			Return.push_back(CurRandomData.RangeIn + (std::rand() % (CurRandomData.RangeOut - CurRandomData.RangeIn + 1)));
 		setRandMassive(Return);
-		cout << "\n\nCreated: ";
-		PrintMassive(Random);
-		sortByType(Type);
 	}
 }
 vector<string> CCore::StringToVector(string input)

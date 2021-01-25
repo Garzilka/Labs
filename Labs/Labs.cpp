@@ -70,11 +70,11 @@ void checkParams(vector<string> Params)
 		if (str == "-RND")
 		{
 			if (Params.size() > 4)
-				Core->createRandomMassive(RandomData(atoi(Params[1].c_str()), atoi(Params[2].c_str()), atoi(Params[3].c_str())), atoi(Params[4].c_str()));
+				Core->Sorting(RandomData(atoi(Params[1].c_str()), atoi(Params[2].c_str()), atoi(Params[3].c_str())), atoi(Params[4].c_str()));
 			else if (Params.size() >= 4)
 			{
 				cout << "No input type. Use default " << Params.size() << " \n";
-				Core->createRandomMassive(RandomData(atoi(Params[1].c_str()), atoi(Params[2].c_str()), atoi(Params[3].c_str())));
+				Core->Sorting(RandomData(atoi(Params[1].c_str()), atoi(Params[2].c_str()), atoi(Params[3].c_str())));
 				
 			}
 			else
@@ -87,9 +87,9 @@ void Testing()
 {
 #ifdef DEBUG
 	//Core->setMassive(VectorFromFile(OpenFile(string(DEFAULT_PATH1))));
-	Core->createRandomMassive(RandomData(15, 5, 10), 0);
+	Core->Sorting(RandomData(100, 5000, 5000000), 0);
 	assert(Core->isMassiveSorted() == true);
-	Core->createRandomMassive(RandomData(15, 5, 10), 1);
+	Core->Sorting(RandomData(15, 5, 10), 1);
 	assert(Core->isMassiveSorted() == true);
 	cout << "Test completed!\n";
 #endif // DEBUG

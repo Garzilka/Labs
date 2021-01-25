@@ -1,12 +1,14 @@
 #pragma once
 #include "pch.h"
+#define Iterations 10
 class CCore
 {
 public:
 	CCore();
 	
 	void setMassive(vector<string> Value);
-	void createRandomMassive(RandomData Data, int Type = 2);
+	void Sorting(RandomData Data, int Type = 2);
+	void createRandomMassive();
 	vector<string> StringToVector(string input);
 	void sortByType(int type);
 
@@ -36,6 +38,7 @@ private:
 	}
 	vector<int> Massive;
 	vector<int> Random;
+	RandomData CurRandomData = RandomData(0,0,0);
 };
 
 extern CCore* Core;
