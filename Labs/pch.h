@@ -5,7 +5,7 @@
 #define DefaultSize 255 //дефолтное значение для буффера
 #define DEFAULT_PATH "C:\\Users\\Public\\Documents\\TEST.txt"
 #define DEFAULT_PATH1 "C:\\TEST.txt"
-//#define DEBUG
+#define DEBUG
 #include <iostream>
 #include <vector>
 #include <string>

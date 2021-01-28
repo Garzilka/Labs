@@ -1,19 +1,23 @@
 #pragma once
 #include "pch.h"
-#define Iterations 10
+/*!
+	\brief CCore
+	\warning явл€етс€ глобальной переменной Core, объ€влена в Labs.cpp (main)
+	ќсновной функционал программы, в будущем может использоватьс€ как OBserver и контейнер дл€ быстрого доступка к подситемам, например BD
+*/
 class CCore
 {
 public:
 	CCore();
 	
 	void setMassive(vector<string> Value);
-	void Sorting(RandomData Data, int Type = 2);
-	void createRandomMassive();
+	void createRandomMassive(RandomData Data, int Type = 2);
 	vector<string> StringToVector(string input);
 	void sortByType(int type);
 
 #ifdef DEBUG
 	vector<int> getMassive() { return Massive; }
+	//‘ункци€ проверки сортировки
 	bool isMassiveSorted()
 	{
 		for (int i = 0; i < Massive.size() - 1; i++)
@@ -38,7 +42,6 @@ private:
 	}
 	vector<int> Massive;
 	vector<int> Random;
-	RandomData CurRandomData = RandomData(0,0,0);
 };
 
 extern CCore* Core;
