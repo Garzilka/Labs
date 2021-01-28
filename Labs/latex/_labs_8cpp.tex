@@ -1,0 +1,174 @@
+\hypertarget{_labs_8cpp}{}\doxysection{Файл C\+:/\+Users/\+Garzi/\+Documents/\+Projects/\+Study/7 SEM/\+Software\+Engineering/\+L/2/\+Labs/\+Labs/\+Labs.cpp}
+\label{_labs_8cpp}\index{C:/Users/Garzi/Documents/Projects/Study/7 SEM/SoftwareEngineering/L/2/Labs/Labs/Labs.cpp@{C:/Users/Garzi/Documents/Projects/Study/7 SEM/SoftwareEngineering/L/2/Labs/Labs/Labs.cpp}}
+{\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}CCore.\+h\char`\"{}}\newline
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_labs_8cpp_a00658efa68740874a81b1277e1982cce}{Open\+File}}(argv)
+\begin{DoxyCompactList}\small\item\em Макрос открытия файла \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ string $>$ \mbox{\hyperlink{_labs_8cpp_ad2f16c2d3b469ce62f9b6f518c9cad3a}{get\+Help}} ()
+\begin{DoxyCompactList}\small\item\em Вывод справки \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{_labs_8cpp_acbb02a12cf3bf78a10bc947c94a81963}{Vector\+From\+File}} (string path)
+\begin{DoxyCompactList}\small\item\em Vector from file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_labs_8cpp_abc8eedc07be588aba444f579c6fe0f94}{check\+Params}} (vector$<$ string $>$ Params)
+\begin{DoxyCompactList}\small\item\em check\+Params \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_labs_8cpp_ac0537c4c127f018e8f2e703f1b8552de}{Testing}} ()
+\begin{DoxyCompactList}\small\item\em Testing. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_labs_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em it\textquotesingle{}s Main \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+ifstream \mbox{\hyperlink{_labs_8cpp_a6609b46c8713cd51489fcf48f5d4ffc6}{ff}}
+\item 
+\mbox{\hyperlink{class_c_core}{CCore}} $\ast$ \mbox{\hyperlink{_labs_8cpp_ab7dd07eb2acce556ceb9c3eecac2560e}{Core}} = new \mbox{\hyperlink{class_c_core}{CCore}}()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{_labs_8cpp_a00658efa68740874a81b1277e1982cce}\label{_labs_8cpp_a00658efa68740874a81b1277e1982cce}} 
+\index{Labs.cpp@{Labs.cpp}!OpenFile@{OpenFile}}
+\index{OpenFile@{OpenFile}!Labs.cpp@{Labs.cpp}}
+\doxysubsubsection{\texorpdfstring{OpenFile}{OpenFile}}
+{\footnotesize\ttfamily \#define Open\+File(\begin{DoxyParamCaption}\item[{}]{argv }\end{DoxyParamCaption})}
+
+{\bfseries Макроопределение\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\(\backslash\)}
+\DoxyCodeLine{    cout << \textcolor{stringliteral}{"{}PreProc Define file start without out"{}};\(\backslash\)}
+\DoxyCodeLine{    ff = ifstream(argv.c\_str());\(\backslash\)}
+\DoxyCodeLine{    if (argv.size() > 5)\(\backslash\)}
+\DoxyCodeLine{    \{\(\backslash\)}
+\DoxyCodeLine{std::cout << \textcolor{stringliteral}{"{}\(\backslash\)npath = "{}} << argv << \textcolor{stringliteral}{"{}\(\backslash\)n"{}}; \(\backslash\)}
+\DoxyCodeLine{if (!\mbox{\hyperlink{_labs_8cpp_a6609b46c8713cd51489fcf48f5d4ffc6}{ff}}.is\_open())\(\backslash\)}
+\DoxyCodeLine{\{\(\backslash\)}
+\DoxyCodeLine{    cout << \textcolor{stringliteral}{"{}\(\backslash\)nStop! \(\backslash\)nFile not Found! "{}} << \textcolor{stringliteral}{"{}\(\backslash\)n"{}}; \(\backslash\)}
+\DoxyCodeLine{\}\(\backslash\)}
+\DoxyCodeLine{    \}\(\backslash\)}
+\DoxyCodeLine{    else\(\backslash\)}
+\DoxyCodeLine{    cout << \textcolor{stringliteral}{"{}\(\backslash\)nStop! Haven't path! "{}} << \textcolor{stringliteral}{"{}\(\backslash\)n"{}}; \(\backslash\)}
+\DoxyCodeLine{\};\(\backslash\)}
+
+\end{DoxyCode}
+
+
+Макрос открытия файла 
+
+\begin{DoxyVersion}{Версия}
+1.\+0.\+0 
+\end{DoxyVersion}
+\begin{DoxyWarning}{Предупреждения}
+варианты неудачи -\/ файл не найден, не введен путь или он короче 5 символов 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em argv} & -\/ Путь Задача Open\+File -\/ Открытие файла по указанному пути, в случае неудачи вывод информации в консоль \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{_labs_8cpp_abc8eedc07be588aba444f579c6fe0f94}\label{_labs_8cpp_abc8eedc07be588aba444f579c6fe0f94}} 
+\index{Labs.cpp@{Labs.cpp}!checkParams@{checkParams}}
+\index{checkParams@{checkParams}!Labs.cpp@{Labs.cpp}}
+\doxysubsubsection{\texorpdfstring{checkParams()}{checkParams()}}
+{\footnotesize\ttfamily void check\+Params (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{Params }\end{DoxyParamCaption})}
+
+
+
+check\+Params 
+
+\begin{DoxyVersion}{Версия}
+1.\+0.\+0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em Params} & -\/ вектор параметров \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Предупреждения}
+-\/ минимальное колличество параметров -\/ 3, если параметры описаны неправильно выведится ошибка \char`\"{}\+Uncorrect! Parameters are incorrect or not entered\char`\"{} check\+Params -\/ обработка входящих параметров 
+\end{DoxyWarning}
+\mbox{\Hypertarget{_labs_8cpp_ad2f16c2d3b469ce62f9b6f518c9cad3a}\label{_labs_8cpp_ad2f16c2d3b469ce62f9b6f518c9cad3a}} 
+\index{Labs.cpp@{Labs.cpp}!getHelp@{getHelp}}
+\index{getHelp@{getHelp}!Labs.cpp@{Labs.cpp}}
+\doxysubsubsection{\texorpdfstring{getHelp()}{getHelp()}}
+{\footnotesize\ttfamily vector$<$string$>$ get\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Вывод справки 
+
+\begin{DoxyVersion}{Версия}
+1.\+0.\+0
+\end{DoxyVersion}
+Help\+: -\/h Help\+: -\/help Fast Sort\+: -\/FF (FROMFILE) + Path + type (Example\+: -\/FF C\+:Test\+Folder\+Test.\+txt 1) Fast Sort\+: -\/RND (RANDOM MASSIVE) + Length + Range\+In + Range\+Out (Example\+: -\/RND 50 10 200) \mbox{\Hypertarget{_labs_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{_labs_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{Labs.cpp@{Labs.cpp}!main@{main}}
+\index{main@{main}!Labs.cpp@{Labs.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+it\textquotesingle{}s Main 
+
+\begin{DoxyVersion}{Версия}
+1.\+0.\+0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em argc} & -\/ количество входящих параметров \\
+\hline
+\mbox{\texttt{ in}}  & {\em argv} & -\/ параметры\\
+\hline
+\end{DoxyParams}
+Задача main -\/ вывод справки, обработка запросов пользователя \mbox{\Hypertarget{_labs_8cpp_ac0537c4c127f018e8f2e703f1b8552de}\label{_labs_8cpp_ac0537c4c127f018e8f2e703f1b8552de}} 
+\index{Labs.cpp@{Labs.cpp}!Testing@{Testing}}
+\index{Testing@{Testing}!Labs.cpp@{Labs.cpp}}
+\doxysubsubsection{\texorpdfstring{Testing()}{Testing()}}
+{\footnotesize\ttfamily void Testing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Testing. 
+
+\begin{DoxyVersion}{Версия}
+1.\+0.\+0
+\end{DoxyVersion}
+Testing -\/ Unit тесты В программе реализованы две проверки, только на сортировки. Работают только при включенной директиве DEBUG \mbox{\Hypertarget{_labs_8cpp_acbb02a12cf3bf78a10bc947c94a81963}\label{_labs_8cpp_acbb02a12cf3bf78a10bc947c94a81963}} 
+\index{Labs.cpp@{Labs.cpp}!VectorFromFile@{VectorFromFile}}
+\index{VectorFromFile@{VectorFromFile}!Labs.cpp@{Labs.cpp}}
+\doxysubsubsection{\texorpdfstring{VectorFromFile()}{VectorFromFile()}}
+{\footnotesize\ttfamily vector$<$string$>$ Vector\+From\+File (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Vector from file. 
+
+\begin{DoxyVersion}{Версия}
+1.\+0.\+0 
+\end{DoxyVersion}
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em path} & -\/ путь к файлу\\
+\hline
+\end{DoxyParams}
+Vector from file -\/ разбиение строки на массив строк через пробел 
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{_labs_8cpp_ab7dd07eb2acce556ceb9c3eecac2560e}\label{_labs_8cpp_ab7dd07eb2acce556ceb9c3eecac2560e}} 
+\index{Labs.cpp@{Labs.cpp}!Core@{Core}}
+\index{Core@{Core}!Labs.cpp@{Labs.cpp}}
+\doxysubsubsection{\texorpdfstring{Core}{Core}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_c_core}{CCore}}$\ast$ Core = new \mbox{\hyperlink{class_c_core}{CCore}}()}
+
+\mbox{\Hypertarget{_labs_8cpp_a6609b46c8713cd51489fcf48f5d4ffc6}\label{_labs_8cpp_a6609b46c8713cd51489fcf48f5d4ffc6}} 
+\index{Labs.cpp@{Labs.cpp}!ff@{ff}}
+\index{ff@{ff}!Labs.cpp@{Labs.cpp}}
+\doxysubsubsection{\texorpdfstring{ff}{ff}}
+{\footnotesize\ttfamily ifstream ff}
+
